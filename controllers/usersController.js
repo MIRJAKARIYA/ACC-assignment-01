@@ -4,12 +4,14 @@
 
 
 module.exports.getAllUsers = (req, res, next)=>{
-    res.json(req.body.myData) 
+    const {s} = req.query
+    res.json(req.parsed.myData.slice(0,s)) 
 }
 
 //controller to get a random user
 module.exports.getRandomUser = (req, res, next)=>{
-    const data = req.body.myData
+    const data = req.parsed.myData
+    console.log(data)
     const randomData = data[Math.floor(Math.random()*data.length)]
     res.json(randomData)
 }
@@ -17,7 +19,12 @@ module.exports.getRandomUser = (req, res, next)=>{
 //controller to post a user
 
 module.exports.saveUser = (req, res, next) =>{
-    res.json({saved: true})
+ 
+    const oldData =req.parsed.myData
+       console.log(oldData)
+    oldData.push(req.body)
+    req.stringified ={oldData:oldData}
+    next()
 }
 
 //controller to update a random user
