@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const usersRouter = require('./routes/v1/users.route')
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -10,6 +11,7 @@ app.use(express.json());
 app.set("view engine", "ejs");
 
 //routes
+app.use('/user',usersRouter)
 
 
 
