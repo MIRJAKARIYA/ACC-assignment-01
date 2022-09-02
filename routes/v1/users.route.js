@@ -1,10 +1,11 @@
 const express = require('express');
-const usersController = require('../../controllers/usersController')
+const usersController = require('../../controllers/usersController');
+const fileReading = require('../../middlewares/fileReading');
 const router = express.Router();
 
-router.route('/all').get(usersController.getAllUsers)
+router.route('/all').get(fileReading,usersController.getAllUsers)
 
-router.route('/random').get(usersController.getRandomUser)
+router.route('/random').get(fileReading,usersController.getRandomUser)
 
 router.route('/save').post(usersController.saveUser)
 

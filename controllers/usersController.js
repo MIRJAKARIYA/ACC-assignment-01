@@ -1,26 +1,17 @@
-const fs = require('fs');
+
 //controller to get all userr
-const FILE_PATH = 'data/users.json'
-const parseJson = require('../utils/parseJson');
+
+
 
 module.exports.getAllUsers = (req, res, next)=>{
-    
-    fs.readFile(FILE_PATH,(err, data)=>{
-        if(err){
-            console.log(err)
-            res.end()
-        }
-        else{
-            const parsedData = parseJson(data)
-            
-            res.send(parsedData)
-        }
-    })
+    res.json(req.body.myData) 
 }
 
 //controller to get a random user
 module.exports.getRandomUser = (req, res, next)=>{
-    res.json({random: "jack"})
+    const data = req.body.myData
+    const randomData = data[Math.floor(Math.random()*data.length)]
+    res.json(randomData)
 }
 
 //controller to post a user
