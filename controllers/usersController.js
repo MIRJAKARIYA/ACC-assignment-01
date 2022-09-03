@@ -11,7 +11,6 @@ module.exports.getAllUsers = (req, res, next)=>{
 //controller to get a random user
 module.exports.getRandomUser = (req, res, next)=>{
     const data = req.parsed.myData
-    console.log(data)
     const randomData = data[Math.floor(Math.random()*data.length)]
     res.json(randomData)
 }
@@ -19,9 +18,7 @@ module.exports.getRandomUser = (req, res, next)=>{
 //controller to post a user
 
 module.exports.saveUser = (req, res, next) =>{
- 
     const oldData =req.parsed.myData
-       console.log(oldData)
     oldData.push(req.body)
     req.stringified ={oldData:oldData}
     next()
@@ -29,8 +26,17 @@ module.exports.saveUser = (req, res, next) =>{
 
 //controller to update a random user
 module.exports.updateSingleUser = (req, res, next) =>{
-    console.log(req.params.id)
-    res.json({updatedSingle: true})
+    const {id} = req.params;
+    const oldData =req.parsed.myData;
+    const updateData = req.body;
+    const targetUpdate = oldData.find(data => data.id === Number(id));
+    const incomingUpdateKeys = Object.keys(updateData);
+    for(const key of incomingUpdateKeys){
+        targetUpdate[key] = updateData[key]
+    }
+    req.stringified = {oldData: oldData}
+    next()
+
 }
 
 //controller to bulk update multiple users

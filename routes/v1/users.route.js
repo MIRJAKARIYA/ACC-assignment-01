@@ -10,7 +10,7 @@ router.route('/random').get(fileReading,usersController.getRandomUser)
 
 router.route('/save').post(fileReading,usersController.saveUser,fileWritting)
 
-router.route('/update/:id').patch(usersController.updateSingleUser)
+router.route('/update/:id').patch(fileReading,usersController.updateSingleUser,fileWritting)
 
 router.route('/bulk-update/:id').patch(usersController.updateMultipleUser)
 
