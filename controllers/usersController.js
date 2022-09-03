@@ -47,7 +47,7 @@ module.exports.updateMultipleUser = (req, res, next) =>{
         const data = oldData.find(d => d.id === a)
         console.log(data)
         if(data !== undefined){
-            data.name = "Karim(changed)"
+            data.name = "JHANKAR MAHBUB (changed by bulk update)"
         }
         
     }
