@@ -10,7 +10,6 @@ const fileReading = (req, res, next) =>{
         else{
             const myData = parseJson(data)
             req.parsed = {myData}
-
             next()
         }
         

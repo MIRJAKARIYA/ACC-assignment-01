@@ -10,7 +10,7 @@ const fileWritting = (req, res, next) =>{
             res.end()
         }
         else{
-            res.json({UserAdded: true, users: stringifiedData})
+            res.send(stringifiedData)
         }
     })
 }

@@ -60,5 +60,12 @@ module.exports.updateMultipleUser = (req, res, next) =>{
 
 //controller to delete a user
 module.exports.deleteUser = (req, res, next)=>{
-    res.json({deleted: true})
+    const {id} = req.params
+    const oldData =req.parsed.myData;
+    console.log(id)
+    //write code for deleting
+    const remainingData = oldData.filter(data => data.id !== Number(id))
+    req.stringified ={oldData:remainingData}
+    next()
+
 }

@@ -14,7 +14,7 @@ router.route('/update/:id').patch(fileReading,usersController.updateSingleUser,f
 
 router.route('/bulk-update').patch(fileReading,usersController.updateMultipleUser,fileWritting)
 
-router.route('/delete').delete(usersController.deleteUser)
+router.route('/delete/:id').delete(fileReading,usersController.deleteUser,fileWritting)
 
 
 module.exports = router;
