@@ -16,7 +16,6 @@ app.use('/user',usersRouter)
 
 
 
-
 app.get("/", (req, res) => {
    res.render("home.ejs",{
     port: port
