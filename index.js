@@ -17,7 +17,7 @@ app.use('/user',usersRouter)
 
 
 
-
+//kjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
 
 app.get("/", (req, res) => {
    res.render("home.ejs",{
