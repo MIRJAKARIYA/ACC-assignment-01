@@ -2,13 +2,14 @@ const express = require('express');
 const usersController = require('../../controllers/usersController');
 const fileReading = require('../../middlewares/fileReading');
 const fileWritting = require('../../middlewares/fileWritting');
+const validatePostBody = require('../../middlewares/validatePostBody');
 const router = express.Router();
 
 router.route('/all').get(fileReading,usersController.getAllUsers)
 
 router.route('/random').get(fileReading,usersController.getRandomUser)
 
-router.route('/save').post(fileReading,usersController.saveUser,fileWritting)
+router.route('/save').post(validatePostBody,fileReading,usersController.saveUser,fileWritting)
 
 router.route('/update/:id').patch(fileReading,usersController.updateSingleUser,fileWritting)
 
