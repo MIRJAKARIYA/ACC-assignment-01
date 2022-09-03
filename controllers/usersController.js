@@ -1,7 +1,5 @@
 
-//controller to get all userr
-
-
+//controller to get all users
 
 module.exports.getAllUsers = (req, res, next)=>{
     const {s} = req.query
@@ -16,7 +14,6 @@ module.exports.getRandomUser = (req, res, next)=>{
 }
 
 //controller to post a user
-
 module.exports.saveUser = (req, res, next) =>{
     const oldData =req.parsed.myData
     oldData.push(req.body)
@@ -67,5 +64,4 @@ module.exports.deleteUser = (req, res, next)=>{
     const remainingData = oldData.filter(data => data.id !== Number(id))
     req.stringified ={oldData:remainingData}
     next()
-
 }
