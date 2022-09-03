@@ -41,8 +41,21 @@ module.exports.updateSingleUser = (req, res, next) =>{
 
 //controller to bulk update multiple users
 module.exports.updateMultipleUser = (req, res, next) =>{
-    console.log(req.params.id)
-    res.json({updatedMultiple: true})
+
+    const idArray = req.body;
+    const oldData =req.parsed.myData;
+    console.log(oldData)
+    console.log(idArray)
+    for(const a of idArray){
+        const data = oldData.find(d => d.id === a)
+        console.log(data)
+        if(data !== undefined){
+            data.name = "Karim(changed)"
+        }
+        
+    }
+    req.stringified = {oldData: oldData}
+    next()
 }
 
 //controller to delete a user

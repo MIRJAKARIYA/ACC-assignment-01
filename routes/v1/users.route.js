@@ -12,7 +12,7 @@ router.route('/save').post(fileReading,usersController.saveUser,fileWritting)
 
 router.route('/update/:id').patch(fileReading,usersController.updateSingleUser,fileWritting)
 
-router.route('/bulk-update/:id').patch(usersController.updateMultipleUser)
+router.route('/bulk-update').patch(fileReading,usersController.updateMultipleUser,fileWritting)
 
 router.route('/delete').delete(usersController.deleteUser)
 
